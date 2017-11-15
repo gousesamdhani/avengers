@@ -25,7 +25,7 @@ SECRET_KEY = 'y^dvngncbvqb(9#0_)!tuvjjv819n3tnee9j5glfhqhg1v0#zi'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['52.172.33.220']
+ALLOWED_HOSTS = ['52.172.33.220', '127.0.0.1', 'localhost']
 
 # Application definition
 
@@ -36,7 +36,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'rest_auth',
+    'allauth',
+    'allauth.account',
+    'rest_auth.registration',
+    'fury.apps.FuryConfig'
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -77,7 +87,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'hulk',
 	'USER': 'root',
-	'PASSWORD': '93@gmail.com',
+	'PASSWORD': 'root',
 	'HOST': 'localhost',
 	'PORT': '3306',
     }
@@ -102,6 +112,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        # 'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    )
+}
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/

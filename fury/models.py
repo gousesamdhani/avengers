@@ -2,18 +2,24 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.contrib.auth.models import User
+
 
 # Create your models here.
 
 class nse_bhav_staging(models.Model):
-
-SYMBOL,SERIES,OPEN,HIGH,LOW,CLOSE,LAST,PREVCLOSE,TOTTRDQTY,TOTTRDVAL,TIMESTAMP,TOTALTRADES,ISIN,
-
-	SYMBOL =  models.CharField(max_length=30)
-	SERIES =  models.CharField(max_length=5)
-	OPEN = models.DecimalField(max_digits=10, decimal_places=5)
+	pass
 
 
+class Portfolio(models.Model):
+	stock = models.CharField(max_length=200)
+	shares = models.IntegerField()
+	notes = models.CharField(max_length=200)
+	price = models.FloatField()
+	user = models.ForeignKey(User, on_delete=models.CASCADE)
+	added_at = models.DateTimeField(auto_now_add=True)
+	updated_at = models.DateTimeField(auto_now=True)
+	
+	def __str__(self): 
+		return self.stock
 
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
