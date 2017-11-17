@@ -139,8 +139,17 @@ class Portfolio extends Component {
     }
 
     addToFolio(){
+        var self = this;
+        this.setState({loading: true});
         api.addToFolio(this.state.rows)
           .then(function (response) {
+             var portfolio = self.state.portfolio.concat(self.state.rows);
+             var rows = [];
+             self.setState({
+               loading: false,
+               portfolio: portfolio,
+               rows: rows
+            });
           });
     }
 
@@ -221,7 +230,7 @@ class Portfolio extends Component {
                                                 this.state.portfolio.map((row,key) => {
                                                     return (
                                                         <tr key={key}>{
-                                                            Object.keys(row).map((prop,key)=> {
+                                                            !(key === "checked") && Object.keys(row).map((prop,key)=> {
                                                                 return (
                                                                     <td  key={key}>{row[prop]}</td>
                                                                 );
