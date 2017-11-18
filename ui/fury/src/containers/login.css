@@ -1,0 +1,14 @@
+
+.login-container {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+input[type="text"]
+{
+    border: 0;
+    border-bottom: 1px solid red;
+    outline: 0;
+}
