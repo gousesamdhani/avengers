@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import dj_database_url
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -83,14 +85,7 @@ WSGI_APPLICATION = 'avengers.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'hulk',
-	'USER': 'root',
-	'PASSWORD': 'root',
-	'HOST': 'localhost',
-	'PORT': '3306',
-    }
+    'default': dj_database_url.config()
 }
 
 
